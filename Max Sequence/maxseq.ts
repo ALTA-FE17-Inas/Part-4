@@ -1,24 +1,12 @@
 function maxSequence(arr: any) {
-    if (arr.length === 0) {
-        return 0;
+    let currentSum = 0;
+    let maxSum = arr[0];
+
+    for(let i = 0; i < arr.length; i++){
+        currentSum = Math.max(arr[i], currentSum + arr[i]);
+        maxSum = Math.max(maxSum, currentSum);
     }
-
-    let maksAngka = 0;
-    let tambahNilai = 0;
-
-    for (let i = 0; i < arr.length; i++) {
-        if (tambahNilai <= 0) {
-            tambahNilai = arr[i];
-        } else {
-            tambahNilai += arr[i];
-        }
-
-        if (tambahNilai > maksAngka) {
-            maksAngka = tambahNilai;
-        }
-    }
-
-    return maksAngka > 0 ? maksAngka : 0;
+    return maxSum;
 }
 
 console.log(maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4])); //output: 6
